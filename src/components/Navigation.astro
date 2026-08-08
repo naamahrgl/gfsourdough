@@ -1,39 +1,28 @@
 ---
 // src/components/Navigation.astro
 import { navlinks, navlinkItem } from "../styles/styles";
+import { useTranslations } from "../i18n/utils";
+import type { Lang } from "../i18n/config";
 
 interface Props {
+  lang: Lang;
   overrideClass?: string;
   containerClass?: string;
 }
 
-const { overrideClass, containerClass } = Astro.props;
+const { lang, overrideClass, containerClass } = Astro.props;
 
 const container = containerClass ?? navlinks;
 const linkClass = overrideClass ?? navlinkItem;
 
-const t = {
-    home: 'Home',
-    about: 'About',
- 
-    video: "Video & Motion",
-        animation: "3D animation",
-    photo: "Photography",
-    contact: 'Contact',
-
-};
-
+const t = useTranslations(lang);
+const base = `/${lang}`;
 ---
 
-<div id="navlinks" class={container} >
-      <a href=`/` class={linkClass}>{t.home}</a>
-
-    <a href=`/media/video_and_motion/` class={linkClass}>{t.video}</a>
-  <a href=`/media/animation/` class={linkClass}>{t.animation}</a>
-    <a href=`/media/photography/` class={linkClass}>{t.photo}</a>
-    <a href=`/about/` class={linkClass}>{t.about}</a>
-
-
-
+<div id="navlinks" class={container}>
+  <a href={`${base}/`} class={linkClass}>{t('nav.home')}</a>
+  <a href={`${base}/courses/`} class={linkClass}>{t('nav.courses')}</a>
+  <a href={`${base}/blog/`} class={linkClass}>{t('nav.blog')}</a>
+  <a href={`${base}/recipes/`} class={linkClass}>{t('nav.recipes')}</a>
+  <a href={`${base}/about/`} class={linkClass}>{t('nav.about')}</a>
 </div>
-

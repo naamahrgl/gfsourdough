@@ -1,18 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ProductGrid from '../components/ProductGrid.tsx';
-import { languages, type Lang } from '../i18n/config';
-
-
-import MediaGallery from "../components/Gallery";
-import { getCollection } from "astro:content";
-import { mapToMediaItem } from "../lib/mapToMediaItem";
-
-const projects = await getCollection("media");
-
-const homeProjects = projects
-  .filter((p) => p.data.homepage)
-  .map(mapToMediaItem);
+import { languages, type Lang } from '../../i18n/config';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductGrid from '../../components/ProductGrid.tsx';
 
 const t = {
   title: "Naama Ofir | Video editor, motion designer & 3D character animator",
@@ -25,8 +14,8 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const currentLang: Lang = (lang && lang in languages ? lang : 'en') as Lang;
 
-return Astro.redirect('/en/');
 ---
+
 
 <BaseLayout lang={currentLang} pageTitle={t.title} description={t.description}>
 <ProductGrid client:only="react" lang={currentLang} />

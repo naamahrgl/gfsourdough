@@ -1,24 +1,39 @@
 ---
 import Hamburger from './Hamburger.astro';
 import Navigation from './Navigation.astro';
-import { header, logo, langlink } from '../styles/styles';
+import { header, logo, cartButton, iconButton } from '../styles/styles';
+import CartIndicator from './CartIndicator.tsx'
+import { Icon } from 'astro-icon/components';
+import type { Lang } from '../i18n/config';
 
+interface Props {
+  lang: Lang;
+}
 
+const { lang } = Astro.props;
 ---
-<header class={header}>
-  <div class="flex w-full items-center justify-between lg:justify-start lg:flex-col ">
-    
+<header class={header} dir="rtl" >
+  <div class="flex w-full items-center justify-between lg:justify-start lg:flex-col">
+      
     <div class={logo}>
+          <button class={cartButton} aria-label="View shopping cart" >
+        <Icon name="fa6-solid:globe" class={iconButton} />
+      </button>
       <a href="/">
         <img src="/NameLogo6.png" alt="Logo" class="w-auto" />
-
       </a>
+      <button class={cartButton} aria-label="View shopping cart" id="cart-trigger">
+        <Icon name="fa6-solid:basket-shopping" class={iconButton} />
+        <CartIndicator client:only="react" />
+      </button>
     </div>
-
     <Hamburger />
-    <Navigation />
 
+    <Navigation lang={lang}/>
   </div>
 </header>
 
-
+<script>
+  import { toggleCart } from '../stores/cartStore';
+  document.getElementById('cart-trigger')?.addEventListener('click', () => toggleCart());
+</script>

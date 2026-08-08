@@ -1,10 +1,14 @@
 ---
 import { line , hamburger, navlinks} from "../styles/styles"
+import { Icon } from 'astro-icon/components';
+import { iconButton } from '../styles/styles';
+
+
 ---
 <div id="hamburger" class={hamburger}>
-    <span class={line}></span>
-    <span class={line}></span>
-    <span class={line}></span>
+
+                <Icon name="fa6-solid:bars" class={iconButton} />
+
 </div>
 <script>
   const btn = document.getElementById('hamburger');

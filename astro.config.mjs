@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import netlify from "@astrojs/netlify";
+import icon from 'astro-icon'; // Make sure this is imported
 
 import react from '@astrojs/react';
 
@@ -12,7 +13,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: "https://naamaofir.com",
 
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), icon()],
 
   vite: {
     plugins: [tailwindcss()]

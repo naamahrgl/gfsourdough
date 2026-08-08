@@ -2,16 +2,21 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import CartDrawer from '../components/CartDrawer.tsx';
+import { isRtl, type Lang } from '../i18n/config';
 
 interface Props {
+  lang: Lang;
   pageTitle: string;
 description: string
 }
 
-const { pageTitle, description} = Astro.props;
+const {lang, pageTitle, description} = Astro.props;
+const dir = isRtl(lang) ? 'rtl' : 'ltr';
+
 ---
 
-<html >
+<html lang={lang} dir={dir}>
   <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-866E307NG1"></script>
@@ -67,14 +72,13 @@ const { pageTitle, description} = Astro.props;
 
 <body class="relative overflow-x-hidden bg-[var(--main)] text-white font-sans">
   <div class="min-h-screen ">
-    <Header />
+    <Header lang={lang} />
 
     <main class="relative flex flex-col items-center justify-between">
       <slot />
     </main>
   </div>
-
-  <Footer />
+<CartDrawer client:only="react" lang={lang} />  <Footer />
 </body>
 
 </html>
