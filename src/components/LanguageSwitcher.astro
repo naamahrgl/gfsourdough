@@ -1,0 +1,38 @@
+---
+import { languages, type Lang } from '../i18n/config';
+import { langSwitcher, langSwitcherIcon, langSwitcherSelect } from '../styles/styles';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<div class={langSwitcher}>
+  <Icon name="fa6-solid:globe" class={langSwitcherIcon} />
+  <select
+    class={langSwitcherSelect}
+    aria-label="Switch language"
+    data-current-path={currentPath}
+    data-lang-select
+  >
+    {Object.entries(languages).map(([code, label]) => (
+      <option value={code} selected={code === lang}>{label}</option>
+    ))}
+  </select>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLSelectElement>('[data-lang-select]').forEach((select) => {
+    select.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      const currentPath = target.dataset.currentPath || '/';
+      const segments = currentPath.split('/').filter(Boolean);
+      segments[0] = target.value;
+      window.location.href = '/' + segments.join('/') + '/';
+    });
+  });
+</script>

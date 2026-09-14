@@ -6,6 +6,15 @@ import {
   footerLink, socialContainer, socialIcon, copyright,
   footerNavContainer
 } from '../styles/styles';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
 
 
 
@@ -22,7 +31,7 @@ const t = {
 
 ---
 
-<footer class={footer}>
+<footer class={footer} dir="rtl">
   <div class={footerContainer}>
 
     <!-- Section 1 -->
@@ -33,14 +42,21 @@ const t = {
                                     <a href="https://wa.me/0544422615"><img src='/Digital_Glyph_Black.svg' alt="Whatsapp" class="w-6 h-6" /></a>
         <a href="http://www.linkedin.com/in/naama-ofir-546750180"><img src="/InBug-Black.png" alt="LinkedIn" class={socialIcon} /></a>
                 <a href="mailto:nofir6993@gmail.com"><img src="/email.svg" alt="email" class={socialIcon} /></a>
+                
 
       </div>
+            <div class={socialContainer}>
+
+              <LanguageSwitcher lang={lang} />
+    </div>
+
     </div>
 
     <!-- Section 2 (Quicklinks) – pass lang and override classes; use footerNavContainer to ensure it's visible in footer -->
     <div class={footerSection}>
             <h4 class={footerHeading}>{t.lin}</h4>
-      <Navigation  overrideClass={footerLink} containerClass={footerNavContainer} />
+      <Navigation lang={lang} overrideClass={footerLink} containerClass={footerNavContainer} />
+
     </div>
 
     <!-- Section 3 -->

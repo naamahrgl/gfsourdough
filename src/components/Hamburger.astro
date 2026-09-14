@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { iconButton } from '../styles/styles';
 
 
+
 ---
 <div id="hamburger" class={hamburger}>
 
@@ -11,10 +12,13 @@ import { iconButton } from '../styles/styles';
 
 </div>
 <script>
+
   const btn = document.getElementById('hamburger');
   const nav = document.getElementById('navlinks');
 
   btn?.addEventListener('click', () => {
     nav?.classList.toggle('hidden');
+
   });
+  
 </script>

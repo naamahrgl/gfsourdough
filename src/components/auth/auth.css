@@ -1,0 +1,172 @@
+/*
+  Uses CSS variables so it inherits your site's theme instead of
+  hardcoding colors. Set these on :root (or override per-theme) —
+  fallback values are provided so the forms still look fine as-is.
+*/
+.auth-form {
+  --auth-accent: var(--color-accent, #2b6cb0);
+  --auth-text: var(--color-text, #1a1a1a);
+  --auth-muted: var(--color-muted, #6b7280);
+  --auth-border: var(--color-border, #d9d9d9);
+  --auth-error: var(--color-error, #c0392b);
+  --auth-bg: var(--color-surface, #ffffff);
+  --auth-radius: var(--radius-md, 8px);
+
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--auth-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius);
+  font-family: inherit;
+}
+
+.auth-form h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.4rem;
+  color: var(--auth-text);
+}
+
+.auth-field {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.auth-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--auth-text);
+}
+
+.auth-field input {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--auth-border);
+  border-radius: calc(var(--auth-radius) - 2px);
+  font-size: 1rem;
+  color: var(--auth-text);
+  background: transparent;
+}
+
+.auth-field input:focus-visible {
+  outline: 2px solid var(--auth-accent);
+  outline-offset: 1px;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: calc(var(--auth-radius) - 2px);
+  background: var(--auth-accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-error {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: calc(var(--auth-radius) - 2px);
+  background: color-mix(in srgb, var(--auth-error) 12%, transparent);
+  color: var(--auth-error);
+  font-size: 0.9rem;
+}
+
+.auth-success {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: calc(var(--auth-radius) - 2px);
+  background: color-mix(in srgb, var(--auth-accent) 12%, transparent);
+  color: var(--auth-accent);
+  font-size: 0.9rem;
+}
+
+.auth-switch {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--auth-muted);
+  text-align: center;
+}
+
+.auth-switch button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--auth-accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-forgot {
+  text-align: right;
+  margin: -0.5rem 0 1rem;
+}
+
+.auth-forgot button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.82rem;
+  color: var(--auth-muted);
+  cursor: pointer;
+}
+
+.auth-loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--auth-muted, #6b7280);
+}
+
+/* Header profile menu */
+.user-menu-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.user-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 180px;
+  padding: 0.75rem;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #d9d9d9);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+}
+
+.user-menu-name {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text, #1a1a1a);
+  word-break: break-word;
+}
+
+.user-menu-signout {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-error, #c0392b);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.user-menu-signout:hover {
+  background: color-mix(in srgb, var(--color-error, #c0392b) 8%, transparent);
+}

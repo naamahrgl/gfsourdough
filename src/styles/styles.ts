@@ -26,8 +26,8 @@ export const langlink =
   "text-[10px] md:text-sm text-[var(--light)] hover:text-black transition-colors duration-150";
 
 export const footer = "w-full bg-[var(--main)]  text-[var(--light)] text-sm";
-export const footerContainer = "max-w-6xl mx-auto px-4 py-10 flex justify-between";
-export const footerSection = "w-1/3 text-center break-words"; 
+export const footerContainer = "max-w-6xl mx-auto px-4 py-10 flex justify-between items-center";
+export const footerSection = "w-1/3 text-center break-words  items-center justify-center"; 
 export const footerHeading = "font-semibold mb-2"; 
 export const footerText = "text-brand-text-light mb-2"; 
 export const socialContainer = "flex items-center justify-center gap-2 mt-2";
@@ -73,3 +73,7 @@ export const variantSelect = "border rounded px-2 py-1 text-sm text-gray-700 bor
 export const productFooter = "flex items-center justify-between mt-2";
 export const productPrice = "font-semibold text-lg text-red-600";
 export const addToCartBtn = "px-4 py-2 bg-black text-white rounded text-sm";
+
+export const langSwitcher = "flex items-center gap-2 text-sm ";
+export const langSwitcherIcon = "w-4 h-4 shrink-0";
+export const langSwitcherSelect = "bg-transparent border rounded px-2 py-1 text-sm cursor-pointer";
