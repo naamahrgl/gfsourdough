@@ -32,7 +32,7 @@ export const products: Product[] = [
       he: 'החוויה המלאה — מחמצת פיזית ומחברת מתכונים, בתוספת גישה דיגיטלית לקורס.',
     },
     price: 89,
-    image: '/products/sourdough-course-kit.jpg',
+    image: '/Logo.jpg',
     fulfillment: 'hybrid',
     variantGroup: {
       label: { en: 'Sourdough type', he: 'סוג מחמצת' },
